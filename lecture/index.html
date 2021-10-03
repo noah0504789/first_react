@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8" />
         <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -8,26 +9,35 @@
     <body>
     <div id="root"></div> <!-- 결과 <div id="root"><button>Like</button></div> -->
     <script type="text/babel">
-        conste= React.createElement;
-
-        class LikeButton extends React.Component {
+        class GuGuDan extends React.Component {
             constructor(props) {
                 super(props);
                 this.state = {
-                    liked: false,
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: '',
+                    result: ''
                 };
             }
 
-            render() { // 컴포넌트를 태그로 그리기
-                return
-                <button type="submit" onClick={() => { this.setState({ liked: true})}}>
-                    {this.state.liked === true ? 'Liked' : 'Like'}
-                </button>;
+            render() {
+                return (
+                    <div>
+                        <div>{this.state.first}곱하기 {this.state.second}는?</div>
+                        <form>
+                            <input type="number" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })} />
+                            <button>입력!</button>
+                        </form>
+                        <div>{this.state.result}</div>
+                    </div>
+                );
             }
         }
+
+
     </script>
     <script type="text/babel"> // ReactDOM => 화면에 반영해줌
-        ReactDOM.render(<LikeButton />,document.querySelector('#root'));
+        ReactDOM.render(<GuGuDan />,document.querySelector('#root'));
     </script>
     </body>
 </html>
