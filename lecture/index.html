@@ -7,27 +7,26 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
-    <div id="root"></div> <!-- 결과 <div id="root"><button>Like</button></div> -->
+    <div id="root"></div>
     <script type="text/babel">
         class GuGuDan extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = {
-                    first: Math.ceil(Math.random() * 9),
-                    second: Math.ceil(Math.random() * 9),
-                    value: '',
-                    result: ''
-                };
-            }
+            state = {
+                first: Math.ceil(Math.random() * 9),
+                second: Math.ceil(Math.random() * 9),
+                value: '',
+                result: ''
+            };
 
             onSubmit = (e) => {
                 e.preventDefault();
                 if (parseInt(this.state.value) === this.state.first * this.state.second) {
-                    this.setState({
-                        result: '정답',
-                        first: Math.ceil(Math.random() * 9),
-                        second: Math.ceil(Math.random() * 9),
-                        value: this.state.value + ' ' + "정답!"
+                    this.setState((prevState) => {
+                        return {
+                            result: "정답! " + prevState.state.value,
+                            first: Math.ceil(Math.random() * 9),
+                            second: Math.ceil(Math.random() * 9),
+                            value: ''
+                        };
                     });
                 } else {
                     this.setState({
@@ -41,14 +40,14 @@
 
             render() {
                 return (
-                    <div>
+                    <React.Fragment>
                         <div>{this.state.first}곱하기 {this.state.second}는?</div>
                         <form onSubmit={this.onSubmit}>
                             <input type="number" value={this.state.value} onChange={this.onChange} />
                             <button>입력!</button>
                         </form>
                         <div>{this.state.result}</div>
-                    </div>
+                    </React.Fragment>
                 );
             }
         }
