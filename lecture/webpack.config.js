@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-    name: 'word-relay-setting',
+    name: 'gugudan-webpack-config',
     mode: 'development', // 실서비스: production
-    devtool: 'eval', // 빠르게 하겠다는 뜻
+    devtool: 'eval', // 빠르게 하겠다는 뜻. hidden-source-map은 배포용
     resolve: {
         extensions: ['.js', '.jsx']
     },
