@@ -1,10 +1,10 @@
-const React = require('react')
-const { Component } = React
+const React = require('react');
+const { Component } = React;
+const Try = require('./Try')
 
 function getNumbers() { // 숫자 네 개를 랜덤하게 뽑는 함수
 
 }
-
 
 class NumberBaseball extends Component {
     state = {
@@ -15,13 +15,27 @@ class NumberBaseball extends Component {
 
     };
 
-    onSubmitForm = () => {
+    onSubmitForm = (e) => {
+        e.preventDefault()
+
 
     }
 
-    onChangeInput = () => {
-
+    onChangeInput = (e) => {
+        this.setState({
+            value: e.target.value
+        })
     }
+
+    fruits = [
+        {fruit: '사과', taste: '맛있다'},
+        {fruit:'바나나', taste: '맛없다'},
+        {fruit:'포도', taste: '맛없다'},
+        {fruit:'귤', taste: '맛없다'},
+        {fruit:'감', taste: '맛있다'},
+        {fruit:'배', taste: '맛없다'},
+        {fruit:'밤', taste: '맛있다'}
+    ]
 
     render() {
         return (
@@ -32,23 +46,15 @@ class NumberBaseball extends Component {
                 </form>
                 <div>시도: {this.state.tries.length}</div>
                 <ul>
-                    {[
-                        {fruit: '사과', taste: '맛있다'},
-                        {fruit:'바나나', taste: '맛없다'},
-                        {fruit:'포도', taste: '맛없다'},
-                        {fruit:'귤', taste: '맛없다'},
-                        {fruit:'감', taste: '맛있다'},
-                        {fruit:'배', taste: '맛없다'},
-                        {fruit:'밤', taste: '맛있다'}
-                    ].map((v, i) => {
-                        <li key={v.fruit}><b>{v.fruit}</b> - {i}</li>
+                    {this.fruits.map((v, i) => {
+                        return (
+                            <Try key={v.fruit + v.taste} value={v} index={i}/>
+                        );
                     })}
                 </ul>
             </>
         );
-
     }
-
 }
 
 module.exports = NumberBaseball
