@@ -3,6 +3,7 @@ const ReactDom = require('react-dom')
 
 // const GuGuDan = require('./GuGuDan')
 // const WordRelay = require('./WordRelay')
-const NumberBaseball = require('./NumberBaseball')
+// const NumberBaseball = require('./NumberBaseball')
+const NumberBaseballHooks = require('./NumberBaseballHooks')
 
-ReactDom.render(<NumberBaseball />, document.querySelector('#root'))
+ReactDom.render(<NumberBaseballHooks />, document.querySelector('#root'))
