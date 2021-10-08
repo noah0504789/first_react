@@ -1,5 +1,5 @@
 const React = require('react');
-const { Component } = React;
+const { Component, createRef } = React;
 const Try = require('./Try')
 
 function getNumbers() { // 숫자 네 개를 랜덤하게 뽑는 함수
@@ -36,6 +36,7 @@ class NumberBaseball extends Component {
                 answer: getNumbers(),
                 tries: []
             })
+            this.inputRef.current.focus()
         } else { // 답 틀렸으면
             const answerArray = value.split('').map((v) => parseInt(v))
             let strike = 0
@@ -64,10 +65,14 @@ class NumberBaseball extends Component {
                         value: ''
                     }
                 })
+                this.inputRef.current.focus()
             }
         }
 
     }
+
+    inputRef = createRef()
+
 
     onChangeInput = (e) => {
         this.setState({

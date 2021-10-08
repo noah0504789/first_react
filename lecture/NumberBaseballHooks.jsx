@@ -1,5 +1,5 @@
 const React = require('react');
-const { useState } = React;
+const { useState, PureComponent, memo, createRef } = React;
 const TryHooks = require('./TryHooks')
 
 function getNumbers() { // 숫자 네 개를 랜덤하게 뽑는 함수
@@ -12,7 +12,7 @@ function getNumbers() { // 숫자 네 개를 랜덤하게 뽑는 함수
     return array
 }
 
-const NumberBaseballHooks = () => {
+const NumberBaseballHooks = memo(() => {
     const [result, setResult] = useState('')
     const [value, setValue] = useState('')
     const [answer, setAnswer] = useState(getNumbers())
@@ -77,6 +77,6 @@ const NumberBaseballHooks = () => {
             </ul>
         </>
     )
-}
+})
 
 module.exports = NumberBaseballHooks
