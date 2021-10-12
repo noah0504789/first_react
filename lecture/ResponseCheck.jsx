@@ -68,6 +68,17 @@ class ResponseCheck extends Component {
                 >
                     {message}
                 </div>
+                {(() => {
+                    if (result.length === 0) {
+                        return null
+                    } else {
+                        return <>
+                            <div> 평균 시간 : {result.reduce((a,c) => a+c) / result.length}ms</div>
+                            <button onClick={this.onReset}>리셋</button>
+                        </>
+                    }
+                })()}
+
                 {this.renderAverage()}
             </>
         )
