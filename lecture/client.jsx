@@ -1,7 +1,6 @@
 const React = require('react')
 const ReactDom = require('react-dom')
 
-
 import Lotto from './Lotto';
 
 // const Test = require('./RenderTest')
@@ -11,6 +10,5 @@ import Lotto from './Lotto';
 // const NumberBaseballHooks = require('./NumberBaseballHooks')
 // const RSP = require('./RSP')
 // const Lotto = require('./Lotto')
-
 
 ReactDom.render(<Lotto />, document.querySelector('#root'))
